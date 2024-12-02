@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 from pydantic import BaseModel, field_validator, validator
 
+from lib.jwt import generate_jwt_token
+
 router = APIRouter()
 
 
@@ -15,5 +17,6 @@ async def login(data: LoginRequestData):
     password = data.password
 
     if email == "admin@gmail.com" and password == "1234":
-        return {'success': True}
+        jwt_token = generate_jwt_token(data={'email': email})
+        return {'success': True, 'token': jwt_token}
     return {'success': False}
