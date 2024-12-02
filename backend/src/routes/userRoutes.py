@@ -5,4 +5,4 @@ router = APIRouter()
 
 @router.get('/')
 async def getUsers():
-    return []
+    return {'users': []}
