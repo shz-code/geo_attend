@@ -1,3 +1,4 @@
+import Button from "@/components/ui/Button";
 import { COLORS } from "@/lib/constants";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -8,7 +9,7 @@ import {
   Shield,
 } from "lucide-react-native";
 import React, { FC, ReactNode } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 interface FeatureCardProps {
   icon: ReactNode;
@@ -17,7 +18,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description }) => (
-  <View className="bg-white rounded-xl p-4 shadow-md mb-4">
+  <View className="bg-white rounded-xl p-4 mb-4">
     <View className="flex-row items-center mb-2">
       {icon}
       <Text className="text-lg font-bold ml-2">{title}</Text>
@@ -42,11 +43,9 @@ export default function HomePage() {
         <Text className="text-white text-center text-lg mb-6">
           Revolutionize Your Workforce Management
         </Text>
-        <TouchableOpacity className="bg-white py-3 px-6 rounded-full self-center">
-          <Text className="text-emerald-600 font-bold text-lg">
-            Get Started
-          </Text>
-        </TouchableOpacity>
+        <View className="w-fit mx-auto">
+          <Button>Get Started</Button>
+        </View>
       </View>
 
       {/* Features Section */}
@@ -100,12 +99,14 @@ export default function HomePage() {
           <Text className="text-2xl font-bold text-white mb-4">
             Ready to Optimize Your Workforce?
           </Text>
-          <TouchableOpacity className="bg-white py-3 px-6 rounded-full flex-row items-center justify-center">
-            <Text className="text-emerald-600 font-bold text-lg mr-2">
-              Start Free Trial
-            </Text>
-            <ArrowRight size={20} color="#10B981" />
-          </TouchableOpacity>
+          <View>
+            <Button>
+              <View className="flex-row items-center gap-2">
+                Start Free Trial
+                <ArrowRight size={20} color="#10B981" />
+              </View>
+            </Button>
+          </View>
         </View>
       </View>
 

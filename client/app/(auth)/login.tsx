@@ -1,7 +1,8 @@
+import Button from "@/components/ui/Button";
 import { StatusBar } from "expo-status-bar";
 import { Lock, Mail, MapPin } from "lucide-react-native";
 import React, { useState } from "react";
-import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, View } from "react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -54,14 +55,11 @@ const LoginScreen = () => {
           />
         </View>
 
-        <TouchableOpacity
-          className="bg-emerald-600 py-3 rounded-md"
-          onPress={handleLogin}
-        >
-          <Text className="text-white text-center font-semibold text-lg">
+        <View>
+          <Button variant="secondary" textType="secondary">
             Login
-          </Text>
-        </TouchableOpacity>
+          </Button>
+        </View>
 
         {/* <TouchableOpacity onPress={handleForgotPassword}>
           <Text className="text-emerald-600 text-center">Forgot Password?</Text>
