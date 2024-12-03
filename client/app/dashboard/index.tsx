@@ -1,4 +1,6 @@
+import Header from "@/components/Header";
 import { COLORS } from "@/lib/constants";
+import { Link } from "expo-router";
 import { Calendar, ChevronRight, MapPin, Users } from "lucide-react-native";
 import React, { FC, ReactNode } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -17,7 +19,7 @@ const OptionCard: FC<OptionCardProps> = ({
   description,
   image,
 }) => (
-  <TouchableOpacity className="bg-white rounded-md mb-4">
+  <TouchableOpacity className="bg-white rounded-md w-full">
     <View className="w-full h-40">
       <Image
         source={{ uri: image }}
@@ -44,54 +46,20 @@ export default function DashboardScreen() {
     <SafeAreaView className="h-full">
       <ScrollView className=" bg-gray-100">
         {/* Header */}
-        <View className="bg-primary pt-12 pb-6 rounded-b-3xl">
-          <View className="container flex-row justify-between items-center mb-6">
-            <View>
-              <Text className="text-white text-2xl font-bold">
-                Welcome back,
-              </Text>
-              <Text className="text-white text-lg">John Doe</Text>
-            </View>
-            <View>
-              <View className="w-12 h-12 rounded-full">
-                <Image
-                  source={{
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGRxzqH5OcTl9fpjCUJE0HoZxoLFxG4No_2Q&s",
-                  }}
-                  className="w-full h-full rounded-full"
-                />
-              </View>
-            </View>
-          </View>
-          {/* <View className="bg-white rounded-xl p-4">
-          <Text className="text-lg font-semibold mb-2">Today's Overview</Text>
-          <View className="flex-row justify-between">
-            <View>
-              <Text className="text-gray-600">Present</Text>
-              <Text className="text-2xl font-bold text-emerald-600">42</Text>
-            </View>
-            <View>
-              <Text className="text-gray-600">Absent</Text>
-              <Text className="text-2xl font-bold text-red-500">3</Text>
-            </View>
-            <View>
-              <Text className="text-gray-600">On Leave</Text>
-              <Text className="text-2xl font-bold text-yellow-500">5</Text>
-            </View>
-          </View>
-        </View> */}
-        </View>
+        <Header title="Welcome Back," description="John Doe" />
 
         {/* Options */}
-        <View className="container py-8">
-          <Text className="text-2xl font-bold mb-6">Quick Actions</Text>
+        <View className="container py-8 space-y-6">
+          <Text className="text-2xl font-bold">Quick Actions</Text>
 
-          <OptionCard
-            icon={<MapPin size={24} color={COLORS.primary} />}
-            title="Live Tracking"
-            description="Monitor real-time location of your team members."
-            image="https://picsum.photos/800"
-          />
+          <Link href={"/dashboard/liveLocationTracking"}>
+            <OptionCard
+              icon={<MapPin size={24} color={COLORS.primary} />}
+              title="Live Tracking"
+              description="Monitor real-time location of your team members."
+              image="https://picsum.photos/800"
+            />
+          </Link>
 
           <OptionCard
             icon={<Users size={24} color={COLORS.primary} />}
