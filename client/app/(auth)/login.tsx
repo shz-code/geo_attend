@@ -1,5 +1,7 @@
 import Button from "@/components/ui/Button";
 import InputGroup from "@/components/ui/InputGroup";
+import { COLORS } from "@/lib/constants";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Lock, Mail, MapPin } from "lucide-react-native";
 import React, { useState } from "react";
@@ -34,20 +36,22 @@ const LoginScreen = () => {
 
       <View className="container space-y-4">
         <InputGroup
-          icon={<Mail size={20} color="#9CA3AF" />}
+          icon={<Mail size={20} color={COLORS.grey} />}
           placeholder="Email"
           keyboardType="email-address"
         />
         <InputGroup
-          icon={<Lock size={20} color="#9CA3AF" />}
+          icon={<Lock size={20} color={COLORS.grey} />}
           placeholder="Password"
           secureTextEntry
         />
 
         <View>
-          <Button variant="secondary" textType="secondary">
-            Login
-          </Button>
+          <Link href={"/dashboard"}>
+            <Button variant="secondary" textType="secondary">
+              Login
+            </Button>
+          </Link>
         </View>
 
         {/* <TouchableOpacity onPress={handleForgotPassword}>

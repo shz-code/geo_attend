@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import { COLORS } from "@/lib/constants";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import {
   ArrowRight,
@@ -28,6 +29,9 @@ const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description }) => (
 );
 
 export default function HomePage() {
+  const handleClick = () => {
+    router.push("/(auth)/login");
+  };
   return (
     <ScrollView className="flex-1 bg-gray-100">
       <StatusBar style="light" />
@@ -44,7 +48,7 @@ export default function HomePage() {
           Revolutionize Your Workforce Management
         </Text>
         <View className="w-fit mx-auto">
-          <Button>Get Started</Button>
+          <Button onPress={handleClick}>Get Started</Button>
         </View>
       </View>
 
@@ -100,9 +104,9 @@ export default function HomePage() {
             Ready to Optimize Your Workforce?
           </Text>
           <View>
-            <Button>
+            <Button onPress={handleClick}>
               <View className="flex-row items-center gap-2">
-                Start Free Trial
+                <Text>Start Free Trial</Text>
                 <ArrowRight size={20} color="#10B981" />
               </View>
             </Button>
