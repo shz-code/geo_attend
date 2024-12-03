@@ -1,8 +1,9 @@
 import Button from "@/components/ui/Button";
+import InputGroup from "@/components/ui/InputGroup";
 import { StatusBar } from "expo-status-bar";
 import { Lock, Mail, MapPin } from "lucide-react-native";
 import React, { useState } from "react";
-import { Alert, Text, TextInput, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -23,7 +24,7 @@ const LoginScreen = () => {
 
   return (
     <View className="flex-1 justify-center items-center bg-gray-100">
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <View className="items-center mb-12">
         <MapPin size={50} color="#10B981" />
         <Text className="text-2xl font-bold text-emerald-600 mt-2">
@@ -32,28 +33,16 @@ const LoginScreen = () => {
       </View>
 
       <View className="container space-y-4">
-        <View className="flex-row items-center bg-white rounded-md px-3 py-2">
-          <Mail size={20} color="#9CA3AF" />
-          <TextInput
-            className="flex-1 ml-2 text-base"
-            placeholder="Email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
-
-        <View className="flex-row items-center bg-white rounded-md px-3 py-2">
-          <Lock size={20} color="#9CA3AF" />
-          <TextInput
-            className="flex-1 ml-2 text-base"
-            placeholder="Password"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        </View>
+        <InputGroup
+          icon={<Mail size={20} color="#9CA3AF" />}
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+        <InputGroup
+          icon={<Lock size={20} color="#9CA3AF" />}
+          placeholder="Password"
+          secureTextEntry
+        />
 
         <View>
           <Button variant="secondary" textType="secondary">

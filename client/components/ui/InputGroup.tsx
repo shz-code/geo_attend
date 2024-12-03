@@ -1,10 +1,20 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { FC, ReactNode } from "react";
+import { TextInput, TextInputProps, View } from "react-native";
 
-const InputGroup = () => {
+export interface InputGroupProps extends TextInputProps {
+  icon?: ReactNode;
+  placeholder?: string;
+}
+
+const InputGroup: FC<InputGroupProps> = ({ icon, placeholder, ...rest }) => {
   return (
-    <View>
-      <Text className="text-3xl">InputGroup</Text>
+    <View className="flex-row items-center bg-white rounded-md px-3 py-3">
+      {icon}
+      <TextInput
+        className="flex-1 ml-2 text-base placeholder:text-gray-400"
+        placeholder={placeholder}
+        {...rest}
+      />
     </View>
   );
 };
