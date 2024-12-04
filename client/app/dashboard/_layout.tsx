@@ -9,6 +9,7 @@ const _layout = () => {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="liveLocationTracking" />
+        <Stack.Screen name="regularAttendance" />
       </Stack>
     </>
   );

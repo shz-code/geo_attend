@@ -66,12 +66,14 @@ export default function DashboardScreen() {
             image="https://picsum.photos/800"
           />
 
-          <OptionCard
-            icon={<Calendar size={24} color={COLORS.primary} />}
-            title="Normal Attendance"
-            description="View and manage regular attendance records."
-            image="https://picsum.photos/800"
-          />
+          <Link href="/dashboard/regularAttendance">
+            <OptionCard
+              icon={<Calendar size={24} color={COLORS.primary} />}
+              title="Normal Attendance"
+              description="View and manage regular attendance records."
+              image="https://picsum.photos/800"
+            />
+          </Link>
         </View>
 
         {/* Recent Activity */}

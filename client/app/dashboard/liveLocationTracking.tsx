@@ -1,9 +1,10 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Map from "@/components/Map";
 import Button from "@/components/ui/Button";
 import { COLORS } from "@/lib/constants";
 import * as Location from "expo-location";
-import { Clock, MapPin, Play, StopCircle, User } from "lucide-react-native";
+import { MapPin, Play, StopCircle } from "lucide-react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { Alert, Animated, ScrollView, Text, View } from "react-native";
 
@@ -117,21 +118,7 @@ export default function LiveTrackingScreen() {
           </Button>
         </View>
       </ScrollView>
-      {/* Footer */}
-      <View className="bg-white py-4">
-        <View className="container flex-row justify-between items-center">
-          <View className="flex-row gap-2 items-center">
-            <User size={20} color="#10B981" className="mr-2" />
-            <Text className="text-gray-600">John Doe</Text>
-          </View>
-          <View className="flex-row gap-2 items-center">
-            <Clock size={20} color="#10B981" className="mr-2" />
-            <Text className="text-gray-600">
-              {new Date().toLocaleTimeString()}
-            </Text>
-          </View>
-        </View>
-      </View>
+      <Footer />
     </View>
   );
 }
