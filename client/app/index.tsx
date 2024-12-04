@@ -106,7 +106,9 @@ export default function HomePage() {
           <View>
             <Button onPress={handleClick}>
               <View className="flex-row items-center gap-2">
-                <Text>Start Free Trial</Text>
+                <Text className="text-primary text-lg font-bold">
+                  Start Free Trial
+                </Text>
                 <ArrowRight size={20} color="#10B981" />
               </View>
             </Button>

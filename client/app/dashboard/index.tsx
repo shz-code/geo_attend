@@ -3,8 +3,7 @@ import { COLORS } from "@/lib/constants";
 import { Link } from "expo-router";
 import { Calendar, ChevronRight, MapPin, Users } from "lucide-react-native";
 import React, { FC, ReactNode } from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Image, ScrollView, Text, View } from "react-native";
 
 interface OptionCardProps {
   icon: ReactNode;
@@ -19,7 +18,7 @@ const OptionCard: FC<OptionCardProps> = ({
   description,
   image,
 }) => (
-  <TouchableOpacity className="bg-white rounded-md w-full">
+  <View className="bg-white rounded-md w-full">
     <View className="w-full h-40">
       <Image
         source={{ uri: image }}
@@ -38,18 +37,17 @@ const OptionCard: FC<OptionCardProps> = ({
         <ChevronRight size={20} color={COLORS.primary} />
       </View>
     </View>
-  </TouchableOpacity>
+  </View>
 );
 
 export default function DashboardScreen() {
   return (
-    <SafeAreaView className="h-full">
+    <View className="h-full">
+      {/* Header */}
+      <Header title="Welcome Back," description="John Doe" />
       <ScrollView className=" bg-gray-100">
-        {/* Header */}
-        <Header title="Welcome Back," description="John Doe" />
-
         {/* Options */}
-        <View className="container py-8 space-y-6">
+        <View className="container py-8 gap-6">
           <Text className="text-2xl font-bold">Quick Actions</Text>
 
           <Link href={"/dashboard/liveLocationTracking"}>
@@ -98,6 +96,6 @@ export default function DashboardScreen() {
           </View>
         </View> */}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

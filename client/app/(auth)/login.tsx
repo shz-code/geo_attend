@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button";
 import InputGroup from "@/components/ui/InputGroup";
 import { COLORS } from "@/lib/constants";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Lock, Mail, MapPin } from "lucide-react-native";
 import React, { useState } from "react";
@@ -34,7 +34,7 @@ const LoginScreen = () => {
         </Text>
       </View>
 
-      <View className="container space-y-4">
+      <View className="container gap-4">
         <InputGroup
           icon={<Mail size={20} color={COLORS.grey} />}
           placeholder="Email"
@@ -47,11 +47,13 @@ const LoginScreen = () => {
         />
 
         <View>
-          <Link href={"/dashboard"}>
-            <Button variant="secondary" textType="secondary">
-              Login
-            </Button>
-          </Link>
+          <Button
+            variant="secondary"
+            textType="secondary"
+            onPress={() => router.push("/dashboard")}
+          >
+            Login
+          </Button>
         </View>
 
         {/* <TouchableOpacity onPress={handleForgotPassword}>

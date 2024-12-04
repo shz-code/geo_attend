@@ -1,48 +1,42 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Circle } from "react-native-maps";
 
-const Map = () => {
-  const [marker, setMarker] = useState(null);
-
-  const handleMapPress = (event) => {
-    const { latitude, longitude } = event.nativeEvent.coordinate;
-    setMarker({ latitude, longitude });
+interface MapProps {
+  coordinates: {
+    lat: number;
+    lon: number;
   };
+}
 
+const Map: FC<MapProps> = ({ coordinates }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 37.78825, // Example: San Francisco
-          longitude: -122.4324,
+          latitude: coordinates.lat,
+          longitude: coordinates.lon,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        onPress={handleMapPress}
+        showsUserLocation={true}
       >
-        {marker && (
-          <Marker
-            coordinate={marker}
-            title="Selected Location"
-            description={`Latitude: ${marker.latitude.toFixed(
-              4
-            )}, Longitude: ${marker.longitude.toFixed(4)}`}
-          />
-        )}
+        <Circle
+          center={{ latitude: coordinates.lat, longitude: coordinates.lon }}
+          radius={500} // Radius in meters
+          strokeColor="rgba(0, 0, 255, 0.5)" // Circle border color
+          fillColor="rgba(0, 0, 255, 0.2)" // Circle fill color
+        />
       </MapView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   map: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: 400,
   },
 });
 
