@@ -1,7 +1,8 @@
-import { RootState } from "@/store/store";
+import { userLoggedOut } from "@/features/auth/authSlice";
+import { router } from "expo-router";
 import React, { FC } from "react";
-import { Image, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import { Image, Pressable, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 interface HeaderProps {
   title: string;
@@ -9,7 +10,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ title, description }) => {
-  const { name } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   return (
     <View className="bg-primary pt-12 pb-6 rounded-b-3xl">
       <View className="container flex-row justify-between items-center mb-6">
@@ -18,14 +19,20 @@ const Header: FC<HeaderProps> = ({ title, description }) => {
           <Text className="text-white text-lg">{description}</Text>
         </View>
         <View>
-          <View className="w-12 h-12 rounded-full">
+          <Pressable
+            className="w-12 h-12 rounded-full"
+            onPress={() => {
+              dispatch(userLoggedOut());
+              router.push("/(auth)/login");
+            }}
+          >
             <Image
               source={{
                 uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGRxzqH5OcTl9fpjCUJE0HoZxoLFxG4No_2Q&s",
               }}
               className="w-full h-full rounded-full"
             />
-          </View>
+          </Pressable>
         </View>
       </View>
       {/* <View className="bg-white rounded-xl p-4">

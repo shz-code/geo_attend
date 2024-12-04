@@ -13,7 +13,6 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-
   const [login, { isLoading }] = useLoginMutation();
 
   const handleLogin = async () => {
