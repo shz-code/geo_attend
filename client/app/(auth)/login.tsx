@@ -1,19 +1,25 @@
 import Button from "@/components/ui/Button";
 import InputGroup from "@/components/ui/InputGroup";
+import { useLoginMutation } from "@/features/auth/authApi";
 import { COLORS } from "@/lib/constants";
-import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Lock, Mail, MapPin } from "lucide-react-native";
 import React, { useState } from "react";
 import { Alert, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const dispatch = useDispatch();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const handleLogin = async () => {
     // Implement your login logic here
-    Alert.alert("Login", "Login functionality to be implemented");
+
+    const res = await login({ email, password });
   };
 
   const handleForgotPassword = () => {
@@ -50,7 +56,7 @@ const LoginScreen = () => {
           <Button
             variant="secondary"
             textType="secondary"
-            onPress={() => router.push("/dashboard")}
+            onPress={handleLogin}
           >
             Login
           </Button>

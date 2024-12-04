@@ -1,5 +1,7 @@
+import { RootState } from "@/store/store";
 import React, { FC } from "react";
 import { Image, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 interface HeaderProps {
   title: string;
@@ -7,6 +9,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ title, description }) => {
+  const { name } = useSelector((state: RootState) => state.auth);
   return (
     <View className="bg-primary pt-12 pb-6 rounded-b-3xl">
       <View className="container flex-row justify-between items-center mb-6">

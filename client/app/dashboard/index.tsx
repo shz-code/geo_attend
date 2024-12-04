@@ -1,9 +1,12 @@
 import Header from "@/components/Header";
 import { COLORS } from "@/lib/constants";
+import { RootState } from "@/store/store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "expo-router";
 import { Calendar, ChevronRight, MapPin, Users } from "lucide-react-native";
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 interface OptionCardProps {
   icon: ReactNode;
@@ -41,10 +44,19 @@ const OptionCard: FC<OptionCardProps> = ({
 );
 
 export default function DashboardScreen() {
+  const { name } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    (async () => {
+      const res = await AsyncStorage.getItem("auth");
+      console.log(res);
+    })();
+  }, []);
+
   return (
     <View className="h-full">
       {/* Header */}
-      <Header title="Welcome Back," description="John Doe" />
+      <Header title="Welcome Back," description={name!} />
       <ScrollView className=" bg-gray-100">
         {/* Options */}
         <View className="container py-8 gap-6">
