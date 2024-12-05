@@ -49,7 +49,6 @@ export default function DashboardScreen() {
   useEffect(() => {
     (async () => {
       const res = await AsyncStorage.getItem("auth");
-      console.log(res);
     })();
   }, []);
 
@@ -71,12 +70,14 @@ export default function DashboardScreen() {
             />
           </Link>
 
-          <OptionCard
-            icon={<Users size={24} color={COLORS.primary} />}
-            title="Geo Attendance Tracking"
-            description="Track attendance based on geographical location."
-            image="https://picsum.photos/800"
-          />
+          <Link href={"/dashboard/geoAttendance"}>
+            <OptionCard
+              icon={<Users size={24} color={COLORS.primary} />}
+              title="Geo Attendance Tracking"
+              description="Track attendance based on geographical location."
+              image="https://picsum.photos/800"
+            />
+          </Link>
 
           <Link href="/dashboard/regularAttendance">
             <OptionCard

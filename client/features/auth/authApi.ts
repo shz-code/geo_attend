@@ -12,11 +12,8 @@ export const authApi = apiSlice.injectEndpoints({
         body: body,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        console.log(arg);
-
         try {
           const res = await queryFulfilled;
-
           dispatch(
             userLoggedIn({
               email: "web.shahidul.alam@gmail.com",

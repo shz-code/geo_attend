@@ -133,8 +133,8 @@ const RegularAttendanceScreen = () => {
 
         {/* Attendance Status */}
         {entryTime && (
-          <View className="px-6 mb-6">
-            <View className="bg-emerald-100 rounded-xl p-4 shadow-md flex-row items-center">
+          <View className="mb-6">
+            <View className="bg-emerald-100 rounded-md p-4 flex-row gap-4 items-center">
               <CheckCircle2 size={24} color="#10B981" className="mr-2" />
               <Text className="text-emerald-800 font-semibold">
                 {exitTime ? "Attendance Completed" : "Currently Checked In"}
