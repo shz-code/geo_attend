@@ -24,6 +24,8 @@ const authSlice = createSlice({
           JSON.stringify({
             id: action.payload.id,
             email: action.payload.email,
+            token: action.payload.token,
+            name: action.payload.name,
           })
         );
       })();

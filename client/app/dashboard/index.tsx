@@ -1,10 +1,9 @@
 import Header from "@/components/Header";
 import { COLORS } from "@/lib/constants";
 import { RootState } from "@/store/store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "expo-router";
 import { Calendar, ChevronRight, MapPin, Users } from "lucide-react-native";
-import React, { FC, ReactNode, useEffect } from "react";
+import React, { FC, ReactNode } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -45,13 +44,6 @@ const OptionCard: FC<OptionCardProps> = ({
 
 export default function DashboardScreen() {
   const { name } = useSelector((state: RootState) => state.auth);
-
-  // Get logged in user info
-  useEffect(() => {
-    (async () => {
-      const res = await AsyncStorage.getItem("auth");
-    })();
-  }, []);
 
   return (
     <View className="h-full">
