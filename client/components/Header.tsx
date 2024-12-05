@@ -12,7 +12,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ title, description }) => {
   const dispatch = useDispatch();
   return (
-    <View className="bg-primary pt-12 pb-6 rounded-b-3xl">
+    <View className="bg-primary pt-16 pb-6 rounded-b-3xl">
       <View className="container flex-row justify-between items-center mb-6">
         <View>
           <Text className="text-white text-2xl font-bold">{title}</Text>
