@@ -46,6 +46,7 @@ const OptionCard: FC<OptionCardProps> = ({
 export default function DashboardScreen() {
   const { name } = useSelector((state: RootState) => state.auth);
 
+  // Get logged in user info
   useEffect(() => {
     (async () => {
       const res = await AsyncStorage.getItem("auth");

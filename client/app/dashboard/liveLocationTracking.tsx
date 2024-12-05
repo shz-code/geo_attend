@@ -3,7 +3,9 @@ import Header from "@/components/Header";
 import Map from "@/components/Map";
 import Button from "@/components/ui/Button";
 import { COLORS } from "@/lib/constants";
+import { LOCATION_TASK_NAME } from "@/lib/locationTask";
 import * as Location from "expo-location";
+import * as TaskManager from "expo-task-manager";
 import { MapPin, Play, StopCircle } from "lucide-react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { Alert, Animated, ScrollView, Text, View } from "react-native";
@@ -16,6 +18,7 @@ export default function LiveTrackingScreen() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const pulseAnim = useRef(new Animated.Value(1)).current;
 
+  // Animation
   useEffect(() => {
     if (isTracking) {
       const pulse = Animated.loop(
@@ -39,6 +42,15 @@ export default function LiveTrackingScreen() {
     }
   }, [isTracking]);
 
+  useEffect(() => {
+    (async () => {
+      const ck = await TaskManager.isTaskRegisteredAsync(LOCATION_TASK_NAME);
+      if (ck) {
+        startTracking();
+      }
+    })();
+  }, []);
+
   const startTracking = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
@@ -50,7 +62,8 @@ export default function LiveTrackingScreen() {
     setLocation(location);
   };
 
-  const stopTracking = () => {
+  const stopTracking = async () => {
+    await Location.stopLocationUpdatesAsync(LOCATION_TASK_NAME);
     setIsTracking(false);
     Alert.alert("Tracking Stopped", "Your attendance has been recorded.");
   };
